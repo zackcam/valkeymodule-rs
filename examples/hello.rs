@@ -13,7 +13,6 @@ fn hello_mul(_: &Context, args: Vec<ValkeyString>) -> ValkeyResult {
         .collect::<Result<Vec<i64>, ValkeyError>>()?;
 
     let product = nums.iter().product();
-
     let mut response = nums;
     response.push(product);
 
@@ -28,6 +27,6 @@ valkey_module! {
     allocator: (ValkeyAlloc, ValkeyAlloc),
     data_types: [],
     commands: [
-        ["hello.mul", hello_mul, "", 0, 0, 0],
+        ["hello.mul", hello_mul, "", "", 0, 0, 0],
     ],
 }

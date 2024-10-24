@@ -26,6 +26,6 @@ valkey_module! {
     allocator: (ValkeyAlloc, ValkeyAlloc),
     data_types: [],
     commands: [
-        ["expire.cmd", expire_cmd, "write fast deny-oom", 1, 1, 1],
+        ["expire.cmd", expire_cmd, "write fast deny-oom", "", 1, 1, 1],
     ],
 }

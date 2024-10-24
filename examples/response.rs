@@ -68,7 +68,7 @@ valkey_module! {
     allocator: (ValkeyAlloc, ValkeyAlloc),
     data_types: [],
     commands: [
-        ["map.mget", map_mget, "readonly", 1, 1, 1],
-        ["map.unique", map_unique, "readonly", 1, 1, 1],
+        ["map.mget", map_mget, "readonly", "", 1, 1, 1],
+        ["map.unique", map_unique, "readonly", "", 1, 1, 1],
     ],
 }

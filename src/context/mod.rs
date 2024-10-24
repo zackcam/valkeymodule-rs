@@ -480,6 +480,20 @@ impl Context {
         unsafe { raw::RedisModule_ReplyWithError.unwrap()(self.ctx, msg.as_ptr()).into() }
     }
 
+    pub fn add_acl_category(&self, s: &str) -> raw::Status {
+        let acl_flags = Self::str_as_legal_resp_string(s);
+        unsafe {
+            raw::RedisModule_AddACLCategory.unwrap()(self.ctx, acl_flags.as_ptr()).into()
+        }
+    }
+
+    pub fn set_acl_category(&self, command_name: *const i8, acl_flags: *const i8) -> raw::Status {
+        unsafe {
+            let command = raw::RedisModule_GetCommand.unwrap()(self.ctx, command_name);
+            raw::RedisModule_SetCommandACLCategories.unwrap()(command, acl_flags).into()
+        }
+    }
+
     pub fn reply_with_key(&self, result: ValkeyValueKey) -> raw::Status {
         match result {
             ValkeyValueKey::Integer(i) => raw::reply_with_long_long(self.ctx, i),

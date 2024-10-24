@@ -27,6 +27,6 @@ valkey_module! {
     allocator: (ValkeyAlloc, ValkeyAlloc),
     data_types: [],
     commands: [
-        ["infoex", info_cmd, "", 0, 0, 0],
+        ["infoex", info_cmd, "", "", 0, 0, 0],
     ],
 }

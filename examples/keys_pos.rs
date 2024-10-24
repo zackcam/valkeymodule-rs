@@ -29,6 +29,6 @@ valkey_module! {
     allocator: (ValkeyAlloc, ValkeyAlloc),
     data_types: [],
     commands: [
-        ["keys_pos", keys_pos, "getkeys-api", 1, 1, 1],
+        ["keys_pos", keys_pos, "getkeys-api", "", 1, 1, 1],
     ],
 }

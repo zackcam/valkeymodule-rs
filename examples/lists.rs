@@ -44,6 +44,6 @@ valkey_module! {
     allocator: (ValkeyAlloc, ValkeyAlloc),
     data_types: [],
     commands: [
-        ["LPOPRPUSH", lpoprpush, "write fast deny-oom", 1, 2, 1],
+        ["LPOPRPUSH", lpoprpush, "write fast deny-oom", "", 1, 2, 1],
     ],
 }

@@ -46,8 +46,8 @@ valkey_module! {
     allocator: (ValkeyAlloc, ValkeyAlloc),
     data_types: [],
     commands: [
-        ["timer.create", timer_create, "", 0, 0, 0],
-        ["timer.info", timer_info, "", 0, 0, 0],
-        ["timer.stop", timer_stop, "", 0, 0, 0],
+        ["timer.create", timer_create, "", "", 0, 0, 0],
+        ["timer.info", timer_info, "", "", 0, 0, 0],
+        ["timer.stop", timer_stop, "", "", 0, 0, 0],
     ],
 }

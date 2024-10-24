@@ -4,12 +4,13 @@ macro_rules! redis_command {
      $command_name:expr,
      $command_handler:expr,
      $command_flags:expr,
+     $acl_categories:expr,
      $firstkey:expr,
      $lastkey:expr,
      $keystep:expr) => {{
         let name = CString::new($command_name).unwrap();
         let flags = CString::new($command_flags).unwrap();
-
+        let acl_categories_add = CString::new($acl_categories).unwrap();
         /////////////////////
         extern "C" fn __do_command(
             ctx: *mut $crate::raw::RedisModuleCtx,
@@ -38,6 +39,10 @@ macro_rules! redis_command {
         {
             return $crate::raw::Status::Err as c_int;
         }
+        let context = $crate::Context::new($ctx);
+
+        context.set_acl_category(name.as_ptr(), acl_categories_add.as_ptr());
+
     }};
 }
 
@@ -109,11 +114,15 @@ macro_rules! valkey_module {
         $(init: $init_func:ident,)* $(,)*
         $(deinit: $deinit_func:ident,)* $(,)*
         $(info: $info_func:ident,)?
+        $(custom_acl_categories: [
+            $($custom_acl_category:expr),* $(,)*
+        ])?
         commands: [
             $([
                 $name:expr,
                 $command:expr,
                 $flags:expr,
+                $acl_categories:expr,
                 $firstkey:expr,
                 $lastkey:expr,
                 $keystep:expr
@@ -239,9 +248,14 @@ macro_rules! valkey_module {
                     return raw::Status::Err as c_int;
                 }
             )*
+            $(
+                $(
+                    context.add_acl_category($custom_acl_category);
+                )*
+            )?
 
             $(
-                $crate::redis_command!(ctx, $name, $command, $flags, $firstkey, $lastkey, $keystep);
+                $crate::redis_command!(ctx, $name, $command, $flags, $acl_categories, $firstkey, $lastkey, $keystep);
             )*
 
             if $crate::commands::register_commands(&context) == raw::Status::Err {

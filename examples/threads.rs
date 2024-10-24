@@ -66,9 +66,9 @@ valkey_module! {
     allocator: (ValkeyAlloc, ValkeyAlloc),
     data_types: [],
     commands: [
-        ["threads", threads, "", 0, 0, 0],
-        ["set_static_data", set_static_data, "", 0, 0, 0],
-        ["get_static_data", get_static_data, "", 0, 0, 0],
-        ["get_static_data_on_thread", get_static_data_on_thread, "", 0, 0, 0],
+        ["threads", threads, "", "", 0, 0, 0],
+        ["set_static_data", set_static_data, "", "", 0, 0, 0],
+        ["get_static_data", get_static_data, "", "", 0, 0, 0],
+        ["get_static_data_on_thread", get_static_data_on_thread, "", "", 0, 0, 0],
     ],
 }

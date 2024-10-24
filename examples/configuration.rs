@@ -56,7 +56,7 @@ valkey_module! {
     allocator: (ValkeyAlloc, ValkeyAlloc),
     data_types: [],
     commands: [
-        ["configuration.num_changes", num_changes, "", 0, 0, 0],
+        ["configuration.num_changes", num_changes, "", "", 0, 0, 0],
     ],
     configurations: [
         i64: [

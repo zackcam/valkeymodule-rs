@@ -165,8 +165,8 @@ valkey_module! {
     allocator: (ValkeyAlloc, ValkeyAlloc),
     data_types: [],
     commands: [
-        ["call.test", call_test, "", 0, 0, 0],
-        ["call.blocking", call_blocking, "", 0, 0, 0],
-        ["call.blocking_from_detached_ctx", call_blocking_from_detach_ctx, "", 0, 0, 0],
+        ["call.test", call_test, "", "", 0, 0, 0],
+        ["call.blocking", call_blocking, "", "", 0, 0, 0],
+        ["call.blocking_from_detached_ctx", call_blocking_from_detach_ctx, "", "", 0, 0, 0],
     ],
 }

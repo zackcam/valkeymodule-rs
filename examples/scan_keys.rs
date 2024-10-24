@@ -25,6 +25,6 @@ valkey_module! {
     allocator: (ValkeyAlloc, ValkeyAlloc),
     data_types: [],
     commands: [
-        ["scan_keys", scan_keys, "readonly", 0, 0, 0],
+        ["scan_keys", scan_keys, "readonly", "", 0, 0, 0],
     ],
 }

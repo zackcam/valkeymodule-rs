@@ -21,6 +21,6 @@ valkey_module! {
     allocator: (ValkeyAlloc, ValkeyAlloc),
     data_types: [],
     commands: [
-        ["my_role", role, "readonly", 0, 0, 0],
+        ["my_role", role, "readonly", "", 0, 0, 0],
     ],
 }

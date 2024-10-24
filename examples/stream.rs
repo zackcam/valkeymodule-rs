@@ -42,6 +42,6 @@ valkey_module! {
     allocator: (ValkeyAlloc, ValkeyAlloc),
     data_types: [],
     commands: [
-        ["STREAM_POP", stream_read_from, "write", 1, 1, 1],
+        ["STREAM_POP", stream_read_from, "write", "", 1, 1, 1],
     ],
 }
