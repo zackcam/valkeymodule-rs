@@ -150,6 +150,13 @@ impl ValkeyString {
         }
     }
 
+    pub fn safer_clone(&self, _ctx: &Context) -> Self {
+        Self {
+            ctx: ptr::null_mut(),
+            inner: self.inner,
+        }
+    }
+
     #[allow(clippy::not_unsafe_ptr_arg_deref)]
     pub fn create<T: Into<Vec<u8>>>(ctx: Option<NonNull<raw::RedisModuleCtx>>, s: T) -> Self {
         let ctx = ctx.map_or(std::ptr::null_mut(), |v| v.as_ptr());
